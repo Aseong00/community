@@ -6,17 +6,20 @@
 <c:set var="loginOutLink" value="${sessionScope.id==null ? '/login/login/' : '/login/logout'}"/>
 <c:set var="loginOut" value="${sessionScope.id==null ? '로그인' : '로그아웃'}"/>
 <c:set var="registerLink" value="${sessionScope.id==null ? '/register/add' : '/register/info'}"/>
-<c:set var="loginCheck" value="${sessionScope.id==null ? '회원가입' : sessionScope.id }"/>
+<c:set var="loginCheck" value="${sessionScope.id==null ? '회원가입' : '내 정보' }"/>
 <html>
 <head>
     <title>login</title>
     <style>
         * {
-            border-radius: 5px;
             list-style: none;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        body {
+            position: relative;
+            min-height: 100vh;
         }
         .community_top {
             height: 40px;
@@ -53,7 +56,7 @@
         a { text-decoration: none; }
         form {
             margin: 0 auto;
-            margin-top: 8%;
+            margin-top: 9%;
             width: 400px;
             height: 430px;
             border: 1px solid #cccccc;
@@ -68,6 +71,7 @@
             font-size: 30px;
         }
         button {
+            border-radius: 5px;
             border: none;
             color: #eeeeee;
             background-color: #6667AB;
@@ -111,6 +115,30 @@
             font-style: normal;
             font-weight: 600;
         }
+        footer {
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            height: 95px;
+            background-color: #5657ac;
+        }
+        .footer_wrap {
+            margin: auto;
+            width: 80%;
+            text-align: left;
+        }
+        .login_title {
+            font-size: 27px;
+        }
+        h3 {
+            margin-top: 10px;
+            padding-left:40px;
+            color: white;
+        }
+        h4 {
+            padding-left:40px;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -124,7 +152,7 @@
     </ul>
 </header>
     <form:form>
-        <h3 class="login_title">로그인</h3>
+        <h2 class="login_title">로그인</h2>
         <div class="msg">
             <c:if test="${not empty param.msg}">
                 <i> ${URLDecoder.decode(param.msg)}</i>
@@ -143,5 +171,12 @@
             </div>
         </div>
     </form:form>
+<footer>
+    <div class="footer_wrap">
+        <h3>Contact</h3>
+        <h4>asw5223@naver.com</h4>
+        <h4>010 - 9016 - 9663</h4>
+    </div>
+</footer>
 </body>
 </html>

@@ -47,6 +47,9 @@ public class RegisterController {
 
     @PostMapping("/add")
     public String addUser(UserDto userDto, RedirectAttributes redirectAttributes) {
+        System.out.println("userDto.getNum1() = " + userDto.getNum1());
+        System.out.println("userDto.getNum2() = " + userDto.getNum2());
+        System.out.println("userDto.getNum() = " + userDto.getNum());
         try {
             int rowCnt = userService.signUp(userDto);
 
@@ -98,6 +101,8 @@ public class RegisterController {
 
         model.addAttribute("birth", birth);
         model.addAttribute(userDto);
+
+        System.out.println("userDto = " + userDto);
         return "userInfo";
     }
 

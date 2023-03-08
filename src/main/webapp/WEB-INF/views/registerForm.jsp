@@ -4,20 +4,23 @@
 <c:set var="loginOutLink" value="${sessionScope.id==null ? '/login/login/' : '/login/logout'}"/>
 <c:set var="loginOut" value="${sessionScope.id==null ? '로그인' : '로그아웃'}"/>
 <c:set var="registerLink" value="${sessionScope.id==null ? '/register/add' : '/register/info'}"/>
-<c:set var="loginCheck" value="${sessionScope.id==null ? '회원가입' : sessionScope.id }"/>
+<c:set var="loginCheck" value="${sessionScope.id==null ? '회원가입' : '내 정보' }"/>
 <!DOCTYPE html>
 <html>
 <head>
     <title>회원 가입</title>
     <style>
         * {
-            border-radius: 5px;
             list-style: none;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         a { text-decoration: none; }
+        body {
+            position: relative;
+            min-height: 100vh;
+        }
         #logo a:hover {
             border: none;
             color: #eeeeee;
@@ -54,7 +57,7 @@
         }
         form {
             margin: 0 auto;
-            margin-top: 5%;
+            margin-top: 8%;
             width: 400px;
             height: 500px;
             border: 1px solid #cccccc;
@@ -69,6 +72,7 @@
         }
         button {
             display: block;
+            border-radius: 5px;
             margin: auto;
             margin-top: 37px;
             width: 100px;
@@ -105,6 +109,56 @@
         #msg {
             color: red;
         }
+        .birth {
+            width: 125px;
+            padding-right: 5px;
+        }
+        .num_wrap {
+            display: flex;
+            margin-top: 20px;
+            align-items: center;
+        }
+        select {
+            margin-left: 5px;
+            width: 60px;
+            height: 33px;
+            text-indent: 5px;
+            border: 1px solid #cccccc;
+        }
+        select:focus {
+            outline: none;
+            border:2px solid #6667AB;
+        }
+
+        .num2 {
+            margin: 0;
+            margin-left: 5px;
+            width: 185px;
+        }
+        option {
+            font-size: 15px;
+        }
+        footer {
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            height: 95px;
+            background-color: #5657ac;
+        }
+        .footer_wrap {
+            margin: auto;
+            width: 80%;
+            text-align: left;
+        }
+        h3 {
+            margin-top: 10px;
+            padding-left:40px;
+            color: white;
+        }
+        h4 {
+            padding-left:40px;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -118,7 +172,7 @@
     const nameCheck =  /^[가-힣]{3,5}$/;
     const birthCheck = /^\d{4}-\d{2}-\d{2}$/;
     const emailCheck = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-z]+$/;
-    const numCheck = /^\d{3}-\d{4}-\d{4}$/;
+    const numCheck = /^\d{8}$/;
     function formCheck(frm) {
 
         let msg ='';
@@ -163,11 +217,11 @@
             return false
         }
 
-        if(frm.num.value.length==0) {
-            setMessage('전화번호를 입력하세요.', frm.num);
+        if(frm.num2.value.length==0) {
+            setMessage('전화번호를 입력하세요.', frm.num2);
             return false;
-        } else if (!numCheck.test(frm.num.value)) {
-            setMessage('전화번호 형식이 잘못되었습니다.', frm.num);
+        } else if (!numCheck.test(frm.num2.value)) {
+            setMessage('전화번호 형식이 잘못되었습니다.', frm.num2);
             return false
         }
 
@@ -200,12 +254,25 @@
         <label>이름</label>
         <input type="text" name="name" placeholder="ex)홍길동"><br>
         <label>생년월일</label>
-        <input type="text" name="birth" placeholder="ex)1999-01-01"><br>
+        <input type="date" min="1900-01-01" max="2099-12-31" value="2023-01-01" name="birth" class="birth"><br>
         <label>이메일</label>
         <input type="text" name="email" placeholder="ex)asd1234@naver.com"><br>
-        <label>전화번호</label>
-        <input type="text" name="num" placeholder="ex)010-1111-1111"><br>
+        <div class="num_wrap">
+            <label>전화번호</label>
+            <select type="checkbox" name="num1" >
+                <option value="010" selected>010</option>
+                <option value="011">011</option>
+            </select>
+            <input type="text" name="num2" class="num2" placeholder="-없이 입력해 주세요" maxlength="8">
+        </div>
         <button>회원 가입</button>
     </form>
+<footer>
+    <div class="footer_wrap">
+        <h3>Contact</h3>
+        <h4>asw5223@naver.com</h4>
+        <h4>010 - 9016 - 9663</h4>
+    </div>
+</footer>
 </body>
 </html>

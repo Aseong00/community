@@ -3,16 +3,24 @@
 <c:set var="loginOutLink" value="${sessionScope.id==null ? '/login/login/' : '/login/logout'}"/>
 <c:set var="loginOut" value="${sessionScope.id==null ? '로그인' : '로그아웃'}"/>
 <c:set var="registerLink" value="${sessionScope.id==null ? '/register/add' : '/register/info'}"/>
-<c:set var="loginCheck" value="${sessionScope.id==null ? '회원가입' : sessionScope.id }"/>
+<c:set var="loginCheck" value="${sessionScope.id==null ? '회원가입' : '내 정보' }"/>
 <!DOCTYPE html>
 
 <html>
 <style>
+    body {
+        position: relative;
+        min-height: 100vh;
+    }
     * { list-style: none;
         margin: 0;
         padding: 0;
         box-sizing: border-box;}
     a { text-decoration: none; }
+    body {
+        position: relative;
+        min-height: 100vh;
+    }
     #logo a:hover {
         border: none;
         color: #eeeeee;
@@ -54,13 +62,14 @@
     }
     .board_list_wrap {
         margin: auto;
-        margin-top: 50px;
+        margin-top: 30px;
         width: 80%;
         display: flex;
         flex-direction: column;
     }
     .board_navi {
         margin: auto;
+        margin-top: 30px;
         width: 80%;
         display: flex;
         justify-content: center;
@@ -71,7 +80,7 @@
     }
     .search_wrap {
         margin: auto;
-        margin-top: 20px;
+        margin-top: 30px;
         width: 80%;
         display: flex;
         align-items: center;
@@ -162,6 +171,27 @@
     .comment_span {
         color: blue;
     }
+    footer {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        height: 95px;
+        background-color: #5657ac;
+    }
+    .footer_wrap {
+        margin: auto;
+        width: 80%;
+        text-align: left;
+    }
+    h3 {
+        margin-top: 10px;
+        padding-left:40px;
+        color: white;
+    }
+    h4 {
+        padding-left:40px;
+        color: white;
+    }
 </style>
 <head>
     <meta charset="UTF-8">
@@ -233,7 +263,6 @@
             location.href="<c:url value="/board/read${ph.searchCondition.queryString}"/>&bno=" +bno;
         });
     </script>
-    <br>
     <div class="board_navi">
         <c:if test="${totalCnt==null || totalCnt==0}">
             <div> 게시물이 없습니다. </div>
@@ -250,5 +279,12 @@
             </c:if>
         </c:if>
     </div>
+<footer>
+    <div class="footer_wrap">
+        <h3>Contact</h3>
+        <h4>asw5223@naver.com</h4>
+        <h4>010 - 9016 - 9663</h4>
+    </div>
+</footer>
 </body>
 </html>
