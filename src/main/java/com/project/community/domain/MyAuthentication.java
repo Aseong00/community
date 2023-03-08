@@ -8,8 +8,8 @@ public class MyAuthentication extends Authenticator {
     PasswordAuthentication account;
 
     public MyAuthentication(){
-        String id = "***************";
-        String pwd = "**********";
+        String id = "community1025";
+        String pwd = "(community1025)";
         account = new PasswordAuthentication(id, pwd);
     }
 
