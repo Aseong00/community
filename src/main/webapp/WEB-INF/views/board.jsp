@@ -3,7 +3,7 @@
 <c:set var="loginOutLink" value="${sessionScope.id==null ? '/login/login/' : '/login/logout'}"/>
 <c:set var="loginOut" value="${sessionScope.id==null ? '로그인' : '로그아웃'}"/>
 <c:set var="registerLink" value="${sessionScope.id==null ? '/register/add' : '/register/info'}"/>
-<c:set var="loginCheck" value="${sessionScope.id==null ? '회원가입' : sessionScope.id }"/>
+<c:set var="loginCheck" value="${sessionScope.id==null ? '회원가입' : '내 정보' }"/>
 <!DOCTYPE html>
 
 <html>
@@ -13,6 +13,10 @@
         padding: 0;
         box-sizing: border-box;}
     a { text-decoration: none; }
+    body {
+        position: relative;
+        min-height: 100vh;
+    }
     #logo a:hover {
         border: none;
         color: #eeeeee;
@@ -273,6 +277,27 @@
     .comment_date {
         color: #666666;
         font-weight: 400;
+    }
+    footer {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        height: 95px;
+        background-color: #5657ac;
+    }
+    .footer_wrap {
+        margin: auto;
+        width: 80%;
+        text-align: left;
+    }
+    h3 {
+        margin-top: 10px;
+        padding-left:40px;
+        color: white;
+    }
+    h4 {
+        padding-left:40px;
+        color: white;
     }
 </style>
 <head>
@@ -548,7 +573,13 @@
     <input id="replyComment" type="text" name="replyComment" placeholder="답글을 입력하세요.">
     <button id="wrtRepBtn" type="button">등록</button>
     <button id="cancelRepBtn" type="button">취소</button>
-
 </div>
+<footer>
+    <div class="footer_wrap">
+        <h3>Contact</h3>
+        <h4>asw5223@naver.com</h4>
+        <h4>010 - 9016 - 9663</h4>
+    </div>
+</footer>
 </body>
 </html>

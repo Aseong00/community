@@ -4,7 +4,7 @@
 <c:set var="loginOutLink" value="${sessionScope.id==null ? '/login/login/' : '/login/logout'}"/>
 <c:set var="loginOut" value="${sessionScope.id==null ? '로그인' : '로그아웃'}"/>
 <c:set var="registerLink" value="${sessionScope.id==null ? '/register/add' : '/register/info'}"/>
-<c:set var="loginCheck" value="${sessionScope.id==null ? '회원가입' : sessionScope.id }"/>
+<c:set var="loginCheck" value="${sessionScope.id==null ? '회원가입' : '내 정보' }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +16,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        body {
+            position: relative;
+            min-height: 100vh;
         }
         .community_top {
             height: 40px;
@@ -105,7 +109,27 @@
         a {
             text-decoration: none;
         }
-
+        footer {
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            height: 95px;
+            background-color: #5657ac;
+        }
+        .footer_wrap {
+            margin: auto;
+            width: 80%;
+            text-align: left;
+        }
+        h3 {
+            margin-top: 10px;
+            padding-left:40px;
+            color: white;
+        }
+        h4 {
+            padding-left:40px;
+            color: white;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
@@ -155,5 +179,12 @@
         <input type="text" name="pwd" placeholder="비밀번호를 입력하세요." value="<c:out value=''/>">
         <button>확인</button>
     </form>
+<footer>
+    <div class="footer_wrap">
+        <h3>Contact</h3>
+        <h4>asw5223@naver.com</h4>
+        <h4>010 - 9016 - 9663</h4>
+    </div>
+</footer>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <c:set var="loginOutLink" value="${sessionScope.id==null ? '/login/login/' : '/login/logout'}"/>
 <c:set var="loginOut" value="${sessionScope.id==null ? '로그인' : '로그아웃'}"/>
 <c:set var="registerLink" value="${sessionScope.id==null ? '/register/add' : '/register/info'}"/>
-<c:set var="loginCheck" value="${sessionScope.id==null ? '회원가입' : sessionScope.id }"/>
+<c:set var="loginCheck" value="${sessionScope.id==null ? '회원가입' : '내 정보' }"/>
 <!DOCTYPE html>
 
 <html>
@@ -13,6 +13,10 @@
         padding: 0;
         box-sizing: border-box;}
     a { text-decoration: none; }
+    body {
+        position: relative;
+        min-height: 100vh;
+    }
     #logo a:hover {
         border: none;
         color: #eeeeee;
@@ -47,17 +51,10 @@
         display: flex;
         cursor: pointer;
     }
-    * {
-        border-radius: 5px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
 
     form {
         margin: 0 auto;
-        margin-top: 5%;
+        margin-top: 8%;
         width: 400px;
         height: 500px;
         border: 1px solid #cccccc;
@@ -75,6 +72,7 @@
         display: flex;
     }
     button {
+        border-radius: 5px;
         font-size: 13px;
         display: block;
         margin: auto;
@@ -90,6 +88,7 @@
         cursor: pointer;
     }
     .deleteIdBtn {
+        border-radius: 5px;
         font-size: 13px;
         text-align: center;
         line-height: 35px;
@@ -130,6 +129,27 @@
     #msg {
         color: red;
     }
+    footer {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        height: 95px;
+        background-color: #5657ac;
+    }
+    .footer_wrap {
+        margin: auto;
+        width: 80%;
+        text-align: left;
+    }
+    h3 {
+        margin-top: 10px;
+        padding-left:40px;
+        color: white;
+    }
+    h4 {
+        padding-left:40px;
+        color: white;
+    }
 </style>
 <head>
     <meta charset="UTF-8">
@@ -144,7 +164,6 @@
         alert("회원 정보 수정에 실패하였습니다.");
     }
     const pwdCheck = /^[0-9a-zA-Z]{4,12}$/;
-    const numCheck = /^\d{3}-\d{4}-\d{4}$/;
 
     function formCheck(frm) {
         let msg ='';
@@ -155,14 +174,6 @@
         } else if (!pwdCheck.test(frm.pwd.value)) {
             setMessage('비밀번호 형식이 잘못되었습니다.', frm.pwd);
             return false;
-        }
-
-        if(frm.num.value.length==0) {
-            setMessage('전화번호를 입력하세요.', frm.num);
-            return false;
-        } else if (!numCheck.test(frm.num.value)) {
-            setMessage('전화번호 형식이 잘못되었습니다.', frm.num);
-            return false
         }
 
         return true;
@@ -198,12 +209,19 @@
         <label>이메일</label>
         <input type="text" class="nMod" name="email" value="${userDto.email}" readonly><br>
         <label>전화번호</label>
-        <input type="text" name="num" value="${userDto.num}"><br>
+        <input type="text" class="nMod" name="num" value="${userDto.num}" readonly><br>
         <div class="btn_wrap">
             <button>회원 정보 수정</button>
             <div class="deleteIdBtn" onclick="location.href='<c:url value="/register/deleteUser"/>'">회원 탈퇴</div>
         </div>
     </form>
 </section>
+<footer>
+    <div class="footer_wrap">
+        <h3>Contact</h3>
+        <h4>asw5223@naver.com</h4>
+        <h4>010 - 9016 - 9663</h4>
+    </div>
+</footer>
 </body>
 </html>

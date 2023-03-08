@@ -8,17 +8,21 @@ public class UserDto {
     private String name;
     private Date birth;
     private String email;
+    private String num1;
+    private String num2;
     private String num;
     private Date reg_date;
 
-    public UserDto(String id, String pwd, String name, Date birth, String email, String num, Date reg_date) {
+    public UserDto(String id, String pwd, String name, Date birth, String email, Date reg_date, String num1, String num2) {
         this.id = id;
         this.pwd = pwd;
         this.name = name;
         this.birth = birth;
         this.email = email;
-        this.num = num;
         this.reg_date = reg_date;
+        this.num1 = num1;
+        this.num2 = num2;
+        this.num = num1 + num2;
     }
 
     public UserDto() {
@@ -65,6 +69,21 @@ public class UserDto {
         this.email = email;
     }
 
+    public String getNum1() {
+        return num1;
+    }
+
+    public void setNum1(String num1) {
+        this.num1 = num1;
+    }
+
+    public String getNum2() {
+        return num2;
+    }
+
+    public void setNum2(String num2) {
+        this.num2 = num2;
+    }
     public String getNum() {
         return num;
     }
